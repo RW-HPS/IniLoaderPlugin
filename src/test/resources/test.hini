@@ -1,0 +1,24 @@
+export mainTree
+
+[action_kick: actionKick]
+kickMessage: 下次注意点
+
+[action_chat: actionChat]
+chatAllMsg: 你是房主就算了罢
+
+[event_chat: _chat01]
+# regex
+filter: fuck
+trigger: if not self.player.isAdmin
+actions: [::actionKick(player = ::self.player)]
+
+[event_chat: _chat02 extends _chat01]
+trigger: if self.player.isAdmin
+actions: [::actionChat]
+
+
+[action_chat: actionChat2]
+chatAllMsg: test
+
+[timer: timerTest]
+actions: [::actionChat2]
